@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kristian.d2025021701.HelloController">
+    <MenuBar>
+        <menus>
+            <Menu text="Soubor">
+                <MenuItem text="Close" />
+            </Menu>
+            <Menu text="O aplikace">
+                <MenuItem text="Delete" />
+            </Menu>
+        </menus>
+    </MenuBar>
+    <HBox>
+        <VBox>
+            <Label text="Seznam hráčů" />
+            <ListView />
+
+
+        </VBox>
+        <VBox>
+            <Label text="Detaily hráče" />
+         <HBox>
+            <children>
+               <Label text="Label" />
+               <TextField />
+            </children>
+         </HBox>
+         <Button text="Zobrazit" />
+         <Label text="Label" />
+         <Button text="Přidat hráče" />
+         <Button text="Smazat hráče" />
+         <Button text="Upravit hráče" />
+        </VBox>
+    </HBox>
+    <HBox alignment="CENTER">
+        <Label text="©2025 Gasos Kristián Maas" />
+    </HBox>
+</VBox>
