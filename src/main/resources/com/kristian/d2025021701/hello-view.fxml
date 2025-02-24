@@ -17,9 +17,7 @@
     <HBox>
         <VBox>
             <Label text="Seznam hráčů" />
-            <ListView />
-
-
+            <ListView fx:id="players" />
         </VBox>
         <VBox>
             <Label text="Detaily hráče" />
@@ -30,10 +28,10 @@
             </children>
          </HBox>
          <Button text="Zobrazit" />
-         <Label text="Label" />
-         <Button text="Přidat hráče" />
-         <Button text="Smazat hráče" />
-         <Button text="Upravit hráče" />
+         <Label text="Player info" />
+         <Button onAction="#addPlayer" text="Přidat hráče" />
+         <Button onAction="#deletePlayer" text="Smazat hráče" />
+         <Button onAction="#editPlayer" text="Upravit hráče" />
         </VBox>
     </HBox>
     <HBox alignment="CENTER">

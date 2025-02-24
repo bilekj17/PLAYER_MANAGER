@@ -19,5 +19,4 @@ public class Player {
         this.email = email;
         this.registered = System.currentTimeMillis();
     }
-    public
 }
