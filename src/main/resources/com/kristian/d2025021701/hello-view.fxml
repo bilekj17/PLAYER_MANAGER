@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kristian.d2025021701.HelloController">
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kristian.d2025021701.HelloController">
     <MenuBar>
         <menus>
             <Menu text="Soubor">
@@ -27,8 +27,8 @@
                <TextField />
             </children>
          </HBox>
-         <Button text="Zobrazit" />
-         <Label text="Player info" />
+         <Button onAction="#showPlayers" text="Zobrazit" />
+         <Label fx:id="welcomeText" text="Player info" />
          <Button onAction="#addPlayer" text="Přidat hráče" />
          <Button onAction="#deletePlayer" text="Smazat hráče" />
          <Button onAction="#editPlayer" text="Upravit hráče" />

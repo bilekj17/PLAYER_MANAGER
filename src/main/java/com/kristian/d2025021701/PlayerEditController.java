@@ -3,7 +3,7 @@ package com.kristian.d2025021701;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class PlayerFormController {
+public class PlayerEditController {
     private Player player = null;
 
     @FXML
@@ -48,6 +48,10 @@ public class PlayerFormController {
 
         player = new Player(name.getText(), spinner.getValue(), role, null, date.getValue());
         name.getScene().getWindow().hide();
+
+        if (player != null) {
+
+        }
     }
     @FXML
     protected void close() {
