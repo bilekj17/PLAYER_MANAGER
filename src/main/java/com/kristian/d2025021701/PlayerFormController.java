@@ -13,6 +13,9 @@ public class PlayerFormController {
     protected Spinner<Integer> spinner;
 
     @FXML
+    protected TextField email;
+
+    @FXML
     protected ToggleButton bojovnik;
     @FXML
     protected ToggleButton mag;
@@ -33,6 +36,24 @@ public class PlayerFormController {
         return player;
     }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    @FXML
+    protected void load() {
+        name.setText(player.getUsername());
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, player.getLevel(), 1);
+        spinner.setValueFactory(valueFactory);
+
+        switch (player.getPlayerClass()) {
+            case FIGHTER, MAGE, ARCHER -> bojovnik.setSelected(true);
+        }
+        email.setText(player.getEmail());
+        date.setValue(player.getRegistered());
+    }
+
+
     @FXML
     protected void save() {
         PlayerClass role = null;
@@ -46,8 +67,25 @@ public class PlayerFormController {
             role = PlayerClass.ARCHER;
         }
 
-        player = new Player(name.getText(), spinner.getValue(), role, null, date.getValue());
-        name.getScene().getWindow().hide();
+        if (player != null) {
+            player.setUsername(name.getText());
+            player.setLevel(spinner.getValue());
+            if (bojovnik.isSelected()) {
+                player.setPlayerClass(PlayerClass.FIGHTER);
+            }
+            if (mag.isSelected()) {
+                player.setPlayerClass(PlayerClass.MAGE);
+            }
+            if (strelec.isSelected()) {
+                player.setPlayerClass(PlayerClass.ARCHER);
+            }
+
+            player.setEmail(email.getText());
+            player.setRegistered(date.getValue());
+        } else {
+            player = new Player(name.getText(), spinner.getValue(), role, email.getText(), date.getValue());
+        }
+        close();
     }
     @FXML
     protected void close() {

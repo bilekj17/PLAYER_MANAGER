@@ -19,56 +19,22 @@ public class HelloController {
 
         @FXML
         public void initialize() {
-            players.getItems().add(new Player("kristian", 15, PlayerClass.FIGHTER, "nekdo@neco.cz", LocalDate.of(2020, 1, 1)));
-        }
-
-        @FXML
-        protected void addPlayer() {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("playerAdd.fxml"));
-                VBox form = fxmlLoader.load();
-
-                PlayerFormController controller = fxmlLoader.getController();
-
-                Stage stage = new Stage();
-                stage.setTitle("Add Player");
-                stage.setScene(new Scene(form));
-                stage.showAndWait();
-
-                Player player = controller.getPlayer();
-
-                if (player == null) {
-                    return;
-                }
-
-                players.getItems().add(controller.getPlayer());
-
-            } catch (IOException e) {
-                //handle exception
-            }
+            players.getItems().add(new Player("Honza", 15, PlayerClass.FIGHTER, "nekdo@neco.cz", LocalDate.of(2020, 1, 1)));
         }
         @FXML
         protected void deletePlayer() {
             players.getItems().remove(players.getSelectionModel().getSelectedItem());
         }
-        @FXML
-        protected void editPlayer() {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EditPlayer.fxml"));
-            try {
-                VBox form = fxmlLoader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            try {
-                form = fxmlLoader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+    @FXML
+    protected void addPlayer() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("playerAdd.fxml"));
+            VBox form = fxmlLoader.load();
 
-            PlayerEditController controller = fxmlLoader.getController();
+            PlayerFormController controller = fxmlLoader.getController();
 
             Stage stage = new Stage();
-            stage.setTitle("Edit Player");
+            stage.setTitle("Add Player");
             stage.setScene(new Scene(form));
             stage.showAndWait();
 
@@ -80,7 +46,32 @@ public class HelloController {
 
             players.getItems().add(controller.getPlayer());
 
+        } catch (IOException e) {
+            //handle exception
         }
+    }
+
+    @FXML
+    protected void editPlayer() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("playerAdd.fxml"));
+            VBox form = fxmlLoader.load();
+
+            PlayerFormController controller = fxmlLoader.getController();
+
+            controller.setPlayer(players.getSelectionModel().getSelectedItem());
+            controller.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("edit Player");
+            stage.setScene(new Scene(form));
+            stage.showAndWait();
+
+            Player player = controller.getPlayer();
+        } catch (IOException e) {
+            //handle exception
+        }
+    }
 
 
     @FXML

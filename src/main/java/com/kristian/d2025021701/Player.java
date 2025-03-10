@@ -41,4 +41,24 @@ public class Player {
     public LocalDate getRegistered() {
         return registered;
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public void setPlayerClass(PlayerClass playerClass) {
+        this.playerClass = playerClass;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setRegistered(LocalDate registered) {
+        this.registered = registered;
+    }
 }
