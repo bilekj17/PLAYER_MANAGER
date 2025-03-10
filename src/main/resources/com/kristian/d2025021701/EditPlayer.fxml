@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="240.0" prefWidth="285.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kristian.d2025021701.PlayerEditController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="240.0" prefWidth="285.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kristian.d2025021701.PlayerFormController">
     <Label text="Vyplňte následující údaje" />
     <GridPane hgap="4" vgap="4">
         <Label text="Uživatelské jmeno:" GridPane.rowIndex="0" />

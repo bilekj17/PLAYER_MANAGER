@@ -2,6 +2,7 @@ package com.kristian.d2025021701;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
@@ -26,10 +27,10 @@ public class HelloController {
             players.getItems().remove(players.getSelectionModel().getSelectedItem());
         }
     @FXML
-    protected void addPlayer() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("playerAdd.fxml"));
+    protected void addPlayer() throws IOException {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EditPlayer.fxml"));
             VBox form = fxmlLoader.load();
+
 
             PlayerFormController controller = fxmlLoader.getController();
 
@@ -46,31 +47,40 @@ public class HelloController {
 
             players.getItems().add(controller.getPlayer());
 
-        } catch (IOException e) {
-            //handle exception
-        }
     }
 
     @FXML
     protected void editPlayer() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("playerAdd.fxml"));
-            VBox form = fxmlLoader.load();
+            if (players.getSelectionModel().getSelectedItem() != null) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EditPlayer.fxml"));
+                VBox form = fxmlLoader.load();
 
-            PlayerFormController controller = fxmlLoader.getController();
+                PlayerFormController controller = fxmlLoader.getController();
 
-            controller.setPlayer(players.getSelectionModel().getSelectedItem());
-            controller.load();
+                controller.setPlayer(players.getSelectionModel().getSelectedItem());
+                controller.load();
 
-            Stage stage = new Stage();
-            stage.setTitle("edit Player");
-            stage.setScene(new Scene(form));
-            stage.showAndWait();
+                Stage stage = new Stage();
+                stage.setTitle("edit Player");
+                stage.setScene(new Scene(form));
+                stage.showAndWait();
 
-            Player player = controller.getPlayer();
+                Player player = controller.getPlayer();
+            } else {
+                showAlert("vyber hráče");
+            }
+
         } catch (IOException e) {
             //handle exception
         }
+    }
+    private void showAlert(String error) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(error);
+        alert.setContentText(error);
+        alert.showAndWait();
     }
 
 
